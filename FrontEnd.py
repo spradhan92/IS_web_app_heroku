@@ -4,6 +4,7 @@ from pymongo import MongoClient
 import pandas as pd
 import plotly_express as px
 from PIL import Image
+import requests
 client = MongoClient("mongodb+srv://srip_92:FvvhmRfxHBZDqzJO@cluster0.k7ocd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 database = client["Cluster0"]
 collection = database["roadInjury"]
@@ -31,8 +32,9 @@ st.markdown(
     )
 header_container = st.container()
 stats_container = st.container()
+url = "https://imgur.com/ha7EKQ9"
 with header_container:
-    Logoimage = Image.open(r"E:\Shripad_Den\SRH\Master thesis\Proposal\Images\Srh_Logo.png")
+    Logoimage = Image.open(requests.get(url, stream=True).raw)
     st.image(Logoimage)
     st.title("Information Systems Project")
     st.header("Welcome to the Smart Mobility User Stories!!!")

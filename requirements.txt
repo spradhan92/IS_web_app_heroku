@@ -7,3 +7,4 @@ plotly_express
 pillow
 pymongo[srv]
 dnspython
+requests
