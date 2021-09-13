@@ -3,8 +3,9 @@ from bson.son import SON
 from pymongo import MongoClient
 import pandas as pd
 import plotly_express as px
-from PIL import Image
-import requests
+# from PIL import Image
+# import requests
+# import io
 client = MongoClient("mongodb+srv://srip_92:FvvhmRfxHBZDqzJO@cluster0.k7ocd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 database = client["Cluster0"]
 collection = database["roadInjury"]
@@ -32,10 +33,12 @@ st.markdown(
     )
 header_container = st.container()
 stats_container = st.container()
-url = "https://imgur.com/ha7EKQ9"
+# response = requests.get("https://github.com/spradhan92/IS_web_app_heroku/blob/master/Images/Srh_Logo.png")
+# image_bytes = io.BytesIO(response.content)
+# img = Image.open(image_bytes)
 with header_container:
-    Logoimage = Image.open(requests.get(url, stream=True).raw)
-    st.image(Logoimage)
+    #Logoimage = Image.open("gfg.png")
+    #st.image(img)
     st.title("Information Systems Project")
     st.header("Welcome to the Smart Mobility User Stories!!!")
     st.subheader("Use case 1")
