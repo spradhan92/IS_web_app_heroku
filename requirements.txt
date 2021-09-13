@@ -1,0 +1,7 @@
+matplotlib
+numpy
+pandas
+streamlit
+pymongo
+plotly_express
+PIL
