@@ -102,8 +102,7 @@ finally:
 vis_df = pd.DataFrame.from_dict(result_dict0)
 
 fig1 = px.bar(vis_df,x='reportyear',y='AVG(percent)',color='mode',barmode='group')
-
-fig1.update_layout(showlegend=False,
+fig1.update_layout(showlegend=True,
 		width=400,
 		height=400,
 		margin=dict(l=1,r=1,b=1,t=1),
@@ -115,6 +114,13 @@ st.write(fig1)
 st.subheader("Use case 2")
 st.write("To analyse the figures of all ethnic groups using different modes of transportation")
 pipeline = [
+    {
+        u"$match": {
+            u"mode": {
+                u"$ne": u"ATHOME"
+            }
+        }
+    },
     {
         u"$group": {
             u"_id": {
@@ -150,7 +156,6 @@ try:
 finally:
     client.close()
 vis_df1 = pd.DataFrame.from_dict(result_dict1)
-
 
 fig2 = px.bar(vis_df1,x='race_eth_name',y='AVG(percent)',color='mode',barmode='group')
 st.write(fig2)
